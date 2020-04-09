@@ -1,0 +1,2 @@
+class MoveNotPermittedError < StandardError
+end

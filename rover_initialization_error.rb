@@ -1,0 +1,2 @@
+class RoverInitializationError < StandardError
+end

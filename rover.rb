@@ -1,5 +1,7 @@
 require 'matrix'
 require './validation'
+require './move_not_permitted_error'
+require './rover_initialization_error'
 
 class Rover
   include Validation
@@ -13,6 +15,10 @@ class Rover
     @position = Vector[x, y]
     @orientation = initial_orientation
     @grid = grid
+    @grid.register_rover(self)
+    unless self.valid?
+      raise RoverInitializationError, self.errors.values.join(' ')
+    end
   end  
 
   def turn_left!
@@ -24,7 +30,16 @@ class Rover
   end
 
   def move_forward!
-    new_position = get_forward_postion
+    old_position = @position
+    @grid.free_position!(old_position)
+    @position = get_forward_postion
+    if valid?
+      @grid.reserve_position!(@position)
+    else
+      @position = old_position
+      @grid.reserve_position!(old_position)
+      raise MoveNotPermittedError, "Unable to perform move operation"
+    end
   end
 
   private
