@@ -25,10 +25,9 @@ class RoverValidator
 
   # @returns {Boolean}
   def position_available
-    positions_arr = self.object.grid.occupied_coordinates.dup
-    return true if positions_arr.empty?
-    positions_arr.delete_at(positions_arr.index(self.object.position) || positions_arr.length)
-    !positions_arr.include?(self.object.position)
+    rover = self.object
+    other_placed_rovers = rover.grid.placed_rovers - [rover]
+    !other_placed_rovers.map { |r| r.position }.include?(rover.position)
   end
 
 end

@@ -6,29 +6,24 @@ class Grid
 
   include Validation
 
-  attr_reader :maximum_x_coord, :maximum_y_coord, :minimum_x_coord, :minimum_y_coord, :occupied_coordinates
+  attr_reader :maximum_x_coord, :maximum_y_coord, :minimum_x_coord, :minimum_y_coord, :placed_rovers
 
   def initialize(x, y)
     @maximum_x_coord = x
     @maximum_y_coord = y
     @minimum_x_coord = @minimum_y_coord = Grid::LOWER_INDEX
-    @occupied_coordinates = []
-  end
-  
-  # Reserves a position for the rover on the grid
-  def register_rover(rover)
-    rover.grid.occupied_coordinates << rover.position
+    @placed_rovers = []
   end
 
   def unregister_rover!(rover)
-    @occupied_coordinates.delete_at(@occupied_coordinates.index(rover.position) || @occupied_coordinates.length)
+    @placed_rovers.delete(rover)
   end
 
-  def free_position!(coordinate_vector)
-    @occupied_coordinates.delete(coordinate_vector) if !@occupied_coordinates.empty?
+  def free_position!(rover)
+    @placed_rovers.delete(rover) if !@placed_rovers.empty?
   end
 
-  def reserve_position!(coordinate_vector)
-    @occupied_coordinates << coordinate_vector
+  def reserve_position!(rover)
+    @placed_rovers << rover
   end
 end

@@ -15,7 +15,7 @@ class Rover
     @position = Vector[x, y]
     @orientation = initial_orientation
     @grid = grid
-    @grid.register_rover(self)
+    @grid.reserve_position!(self)
   end  
 
   def turn_left!
@@ -28,14 +28,11 @@ class Rover
 
   def move_forward!
     old_position = @position
-    @grid.free_position!(old_position)
     @position = get_forward_postion
-    if valid?
-      @grid.reserve_position!(@position)
-    else
+    unless valid?
+      errors = self.errors.values.join(' ')
       @position = old_position
-      @grid.reserve_position!(old_position)
-      raise MoveNotPermittedError, "Unable to perform move operation"
+      raise MoveNotPermittedError, errors
     end
   end
 

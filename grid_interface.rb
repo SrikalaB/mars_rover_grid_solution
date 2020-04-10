@@ -44,4 +44,12 @@ class GridInterface
     raise MoveNotPermittedError, rover.errors.values.join(' ') unless rover.valid?
     return rover
   end
+
+  def get_final_positions
+    final_postions = []
+    @grid.placed_rovers.each do |rover|
+      final_postions << "#{rover.position[0]} #{rover.position[1]} #{rover.orientation}"
+    end
+    final_postions.join("\n")
+  end
 end

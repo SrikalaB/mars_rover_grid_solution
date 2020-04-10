@@ -1,6 +1,7 @@
 require 'optparse'
 require './grid_interface'
 require './grid'
+require 'json'
 
 options = {}
 OptionParser.new do |opts|
@@ -52,7 +53,11 @@ if !options[:interactive_mode].nil?
       if counter > 1
         print "\nWould you like to continue? Type 'yes' or 'no': "
         continue = gets.strip
-        exit if !(continue == "yes")
+        if !(continue == "yes")
+          final_coordinates = grid_interface.get_final_positions
+          print "The final rover positions are:\n #{final_coordinates}\n" if !final_coordinates.empty?
+          exit
+        end
       end
       begin
         print "Enter the start postion and orientation of the rover you want to control. (Example input: 2 2 N):\n"
@@ -74,5 +79,4 @@ if !options[:interactive_mode].nil?
     exit_with_grid_creation_failure(e.message)
   end
 end
-
 
