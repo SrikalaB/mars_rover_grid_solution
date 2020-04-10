@@ -1,5 +1,5 @@
 require 'optparse'
-require './instruction_parser'
+require './grid_interface'
 require './grid'
 
 options = {}
@@ -45,22 +45,22 @@ if !options[:interactive_mode].nil?
   begin
     print "Enter the uppermost right corner coordinates of the plateau grid. (Example input: 7 7):\n"
     coordinates = gets.strip
-    grid = InstructionParser.create_grid(coordinates)
+    grid_interface = GridInterface.new(coordinates)
     counter = 0
     while 1
       counter += 1
       if counter > 1
         print "\nWould you like to continue? Type 'yes' or 'no': "
         continue = gets.strip
-        exit unless continue == "no"
+        exit if !(continue == "yes")
       end
       begin
         print "Enter the start postion and orientation of the rover you want to control. (Example input: 2 2 N):\n"
         start_position = gets.strip
-        rover = InstructionParser.initialize_rover(start_position, grid)
+        rover = grid_interface.initialize_rover(start_position)
         print "Enter instructions to move rover to desired location:\n"
         move_instructions = gets.strip
-        rover = InstructionParser.move_rover(move_instructions, rover)
+        rover = grid_interface.move_rover(move_instructions, rover)
         print "----Position of rover after move is: #{rover.position[0]} #{rover.position[1]} #{rover.orientation}----\n\n"
       rescue RoverInitializationError => e
         print_rover_creation_failure(e.message)

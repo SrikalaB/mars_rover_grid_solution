@@ -4,29 +4,29 @@ require './rover_initialization_error'
 require './rover'
 require 'byebug'
 
-class InstructionParser
-  def self.create_grid(coordinates)
+class GridInterface
+  def initialize(coordinates)
     raise GridInitializationError, 'Invalid input' unless coordinates.match(/^[0-9]+\s+[0-9]+$/)
     x, y = coordinates.split(' ')
     grid = Grid.new(x.to_i, y.to_i)
     unless grid.valid?
       raise GridInitializationError, grid.errors.values.join(' ')
     end
-    return grid
+    @grid = grid
   end
 
-  def self.initialize_rover(start_position, grid)
+  def initialize_rover(start_position)
     raise RoverInitializationError, 'Invalid input' unless start_position.match(/^[0-9]+\s+[0-9]+\s+N|S|E|W$/)
     x, y, o = start_position.split(' ')
-    rover = Rover.new(x.to_i, y.to_i, o, grid)
+    rover = Rover.new(x.to_i, y.to_i, o, @grid)
     unless rover.valid?
-      grid.unregister_rover!(rover)
+      @grid.unregister_rover!(rover)
       raise RoverInitializationError, rover.errors.values.join(' ')
     end
     return rover
   end
 
-  def self.move_rover(instructions, rover)
+  def move_rover(instructions, rover)
     instructions_array = instructions.split(' ')
     raise MoveNotPermittedError, 'Invalid Movement instructions' unless instructions_array.uniq.reject { |l| l == 'L' || l == 'M' || l == 'R'}.empty?
     instructions_array.each do |instruction|
