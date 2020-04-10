@@ -8,7 +8,7 @@ class RoverValidator
             msg: "Invalid orientation, use N,S,E or W",
             with: proc { |rover| Rover::ORIENTATION_MAP.keys.include?(rover.orientation) }
   validates :position,
-            msg: 'Cannot move to postion, out of bounds',
+            msg: 'Cannot move to a postion out of grid boundaries',
             with: :within_plateau_boundary
   validates :position,
             msg: 'Cannot move to position, already occupied!',

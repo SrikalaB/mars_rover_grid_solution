@@ -9,21 +9,13 @@ class GridInterface
     raise GridInitializationError, 'Invalid input' unless coordinates.match(/^[0-9]+\s+[0-9]+$/)
     x, y = coordinates.split(' ')
     grid = Grid.new(x.to_i, y.to_i)
-    unless grid.valid?
-      raise GridInitializationError, grid.errors.values.join(' ')
-    end
     @grid = grid
   end
 
-  def initialize_rover(start_position)
+  def initialize_rover(start_position, rover_name = nil)
     raise RoverInitializationError, 'Invalid input' unless start_position.match(/^[0-9]+\s+[0-9]+\s+N|S|E|W$/)
     x, y, o = start_position.split(' ')
-    rover = Rover.new(x.to_i, y.to_i, o, @grid)
-    unless rover.valid?
-      @grid.unregister_rover!(rover)
-      raise RoverInitializationError, rover.errors.values.join(' ')
-    end
-    return rover
+    Rover.new(x.to_i, y.to_i, o, @grid, rover_name)
   end
 
   def move_rover(instructions, rover)
@@ -41,14 +33,13 @@ class GridInterface
         raise MoveNotPermittedError, "Unable to understand movement instructions"
       end
     end
-    raise MoveNotPermittedError, rover.errors.values.join(' ') unless rover.valid?
     return rover
   end
 
-  def get_final_positions
+  def get_rover_positions
     final_postions = []
     @grid.placed_rovers.each do |rover|
-      final_postions << "#{rover.position[0]} #{rover.position[1]} #{rover.orientation}"
+      final_postions << "#{rover.position[0]} #{rover.position[1]} #{rover.orientation} #{rover.name}"
     end
     final_postions.join("\n")
   end

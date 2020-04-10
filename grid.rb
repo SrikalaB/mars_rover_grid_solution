@@ -13,14 +13,13 @@ class Grid
     @maximum_y_coord = y
     @minimum_x_coord = @minimum_y_coord = Grid::LOWER_INDEX
     @placed_rovers = []
+    unless valid?
+      raise GridInitializationError, errors.values.join(' ')
+    end
   end
 
   def unregister_rover!(rover)
     @placed_rovers.delete(rover)
-  end
-
-  def free_position!(rover)
-    @placed_rovers.delete(rover) if !@placed_rovers.empty?
   end
 
   def reserve_position!(rover)
