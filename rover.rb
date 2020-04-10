@@ -16,9 +16,6 @@ class Rover
     @orientation = initial_orientation
     @grid = grid
     @grid.register_rover(self)
-    unless self.valid?
-      raise RoverInitializationError, self.errors.values.join(' ')
-    end
   end  
 
   def turn_left!

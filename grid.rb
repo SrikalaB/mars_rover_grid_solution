@@ -20,6 +20,10 @@ class Grid
     rover.grid.occupied_coordinates << rover.position
   end
 
+  def unregister_rover!(rover)
+    @occupied_coordinates.delete_at(@occupied_coordinates.index(rover.position) || @occupied_coordinates.length)
+  end
+
   def free_position!(coordinate_vector)
     @occupied_coordinates.delete(coordinate_vector) if !@occupied_coordinates.empty?
   end
