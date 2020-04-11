@@ -1,10 +1,17 @@
 ### Mars Rover Problem Solution
 A ruby script written to facilitate the mars rover movement as per movement instructions.
-### Requirements
+
+### Table of Contents
+1. [Requirements](#requirements)
+2. [Setting up the script](#setup)
+    1. [From source code](#fromCode)
+3. [Another paragraph](#paragraph2)
+
+### Requirements <a name="requirements"></a>
 Ruby: MRI 1.9+ (Tested on Ruby 2.6.3)
-### Setting up the script
+### Setting up the script <a name="setup"></a>
 #### Using Docker
-#### From source code
+#### From source code <a name="fromCode"></a>
 Clone the repo and cd into "mars_rover_solution" folder.
 Install all required dependencies as follows
 `$> bundle install`
