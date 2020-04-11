@@ -1,5 +1,4 @@
 require_relative './validate.rb'
-require 'byebug'
 
 class RoverValidator
   include Validate

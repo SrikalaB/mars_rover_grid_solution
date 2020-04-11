@@ -1,4 +1,5 @@
 require_relative './validations/validation'
+require_relative './custom_exceptions/grid_initialization_error'
 
 class Grid
   LOWER_INDEX = 0
@@ -13,7 +14,7 @@ class Grid
     @minimum_x_coord = @minimum_y_coord = Grid::LOWER_INDEX
     @placed_rovers = []
     unless valid?
-      raise GridInitializationError, errors.values.join(' ')
+      raise ::GridInitializationError, errors.values.join(' ')
     end
   end
 

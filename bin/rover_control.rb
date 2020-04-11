@@ -2,7 +2,6 @@ require 'optparse'
 require './lib/grid_interface'
 require './lib/io_interfaces/file_interpreter'
 require './lib/io_interfaces/user_interpreter'
-require 'byebug'
 
 options = {}
 OptionParser.new do |opts|
