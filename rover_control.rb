@@ -26,9 +26,8 @@ if options.empty? || (!options[:interactive_mode].nil? && !options[:filename].ni
   puts "Usage: ruby rover_control.rb -i\nUsage: ruby rover_control.rb -f=/path/to/jsonfile"
 end
 
-interpreter = options[:interactive_mode] ? UserInterpreter.new : FileInterpreter.new(options[:filename])
-
 begin
+  interpreter = options[:interactive_mode] ? UserInterpreter.new : FileInterpreter.new(options[:filename])
   coordinates = interpreter.get_grid_size
   grid_interface = GridInterface.new(coordinates)
   while 1
@@ -50,5 +49,7 @@ begin
   end
 rescue GridInitializationError => e
   interpreter.exit_with_grid_creation_failure(e.message)
+rescue StandardError => e
+  print "An Error Has occured! #{e.message}"
 end
 
