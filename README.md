@@ -3,15 +3,16 @@ A ruby script written to facilitate the mars rover movement as per movement inst
 
 ### Table of Contents
 1. [Requirements](#requirements)
-2. [Setting up the script](#setup)
-    1. [From source code](#fromCode)
-3. [Another paragraph](#paragraph2)
+2. [Setting up the script](#settingupthescript)
+    1. [From source code](#fromsourcecode)
+3. [Usage](#usage)
+4. [Input specifications](#inputspecifications)
 
-### Requirements <a name="requirements"></a>
+### Requirements
 Ruby: MRI 1.9+ (Tested on Ruby 2.6.3)
 ### Setting up the script <a name="setup"></a>
 #### Using Docker
-#### From source code <a name="fromCode"></a>
+#### From source code
 Clone the repo and cd into "mars_rover_solution" folder.
 Install all required dependencies as follows
 `$> bundle install`
