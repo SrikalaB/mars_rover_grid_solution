@@ -9,7 +9,7 @@ class UserInterpreter < Interpreter
 
   def get_rover_details
     print "\nEnter the start postion and orientation of the rover you want to control (Example input: 2 2 N):\n"
-    print "\s\s\s\s\s\s\s\s\s\sOR\nEnter exit to quit program\n"
+    print "\s\s\s\s\s\s\s\s\s\sOR\nType 'exit' to quit program\n"
     start_position = gets.strip
     raise EndOfInputError if start_position == "exit"
     print "Enter instructions to move rover to desired location:\n"
