@@ -9,6 +9,7 @@ A ruby script written to facilitate the mars rover movement as per movement inst
 4. [Usage](#markdown-header-usage)
     1. [Example - Interactive Method](#markdown-header-usage-interactive-method)
     2. [Example - Input json file method](#markdown-header-input-json-file-method)
+5. [Running Tests](#markdown-header-running-tests)
 
 ### Requirements
 Ruby: MRI 1.9+ (Tested on Ruby 2.6.3)
@@ -117,3 +118,7 @@ The final rover positions are:
 1 3 N rover1
 5 1 E rover2
 ```
+
+### Running Tests
+The script comes with test cases that can be run using:
+`bundle exec rake spec`
