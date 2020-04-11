@@ -23,7 +23,8 @@ OptionParser.new do |opts|
 end.parse!
 
 if options.empty? || (!options[:interactive_mode].nil? && !options[:filename].nil?)
-  puts "Usage: ruby rover_control.rb -i\nUsage: ruby rover_control.rb -f=/path/to/jsonfile"
+  puts "Usage: ruby rover_control.rb -i\n\s\s\s\s\s\s\sOR\nUsage: ruby rover_control.rb -f=/path/to/jsonfile"
+  exit
 end
 
 begin
