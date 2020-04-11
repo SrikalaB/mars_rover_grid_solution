@@ -5,25 +5,24 @@ A ruby script written to facilitate the mars rover movement as per movement inst
 1. [Requirements](#requirements)
 2. [Setting up the script](#settingupthescript)
     1. [From source code](#fromsourcecode)
-3. [Usage](#usage)
-4. [Input specifications](#inputspecifications)
+3. [Input specifications](#inputspecifications)
+4. [Usage](#usage)
+5. [Example - Interactive Method](#interactive)
+6. [Example - Input json file method](#jsonmethod)
 
+<a name="requirements"></a>
 ### Requirements
 Ruby: MRI 1.9+ (Tested on Ruby 2.6.3)
-### Setting up the script <a name="setup"></a>
+<a name="settingupthescript"></a>
+### Setting up the script
 #### Using Docker
+<a name="fromsourcecode"></a>
 #### From source code
 Clone the repo and cd into "mars_rover_solution" folder.
 Install all required dependencies as follows
 `$> bundle install`
-### Usage
-```
-Usage: ruby bin/rover_control.rb --interactive
-Usage: ruby bin/rover_control.rb --file=/path/to/jsonfile
-    -i, --interactive                Run interactively to enter input
-    -f, --file=FILE                  Input json file with instructions.
-    -h, --help                       Prints this help
-```    
+  
+<a name="inputspecifications"></a>
 ### Input specifications
 - Plateau grid size to be input as two integers separated by a space.
     - maximum x coordinate - Integer or 0
@@ -42,9 +41,19 @@ Usage: ruby bin/rover_control.rb --file=/path/to/jsonfile
     - M = Move forward
     Input instructions separated by a space
     Example: `L M R M R R`
-  
 
-#### Usage- Interactive Method:
+<a name="usage"></a> 
+### Usage
+```
+Usage: ruby bin/rover_control.rb --interactive
+Usage: ruby bin/rover_control.rb --file=/path/to/jsonfile
+    -i, --interactive                Run interactively to enter input
+    -f, --file=FILE                  Input json file with instructions.
+    -h, --help                       Prints this help
+``` 
+  
+<a name="interactive"></a>
+#### Example - Interactive Method:
 Example:
 
 ```
@@ -69,8 +78,8 @@ exit
 The final rover positions are:
 4 3 S
 ```
-
-####  Usage- Input json file method
+<a name="jsonmethod"></a>
+####  Example - Input json file method
 In order to perform bulk rover movements on the grid, one can use the json file method.
 The convention used is same as explained in the input specifications section. An array of rovers can be passed as shown in the sample file below:
 
