@@ -1,0 +1,2 @@
+class GridInitializationError < StandardError
+end

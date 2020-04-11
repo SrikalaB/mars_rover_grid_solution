@@ -1,0 +1,22 @@
+{
+  "grid": {
+    "max_x": 5,
+    "max_y": 5
+  },
+  "rovers": [
+    {
+      "name": "rover1",
+      "initial_x": "1",
+      "initial_y": "2",
+      "orientation": "N",
+      "move_instructions": "L M L M L M L M M"
+    },
+    {
+      "name": "rover2",
+      "initial_x": "3",
+      "initial_y": "3",
+      "orientation": "E",
+      "move_instructions": "M M R M M R M R R M"
+    }
+  ]
+}

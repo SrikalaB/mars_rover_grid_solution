@@ -1,0 +1,2 @@
+class EndOfInputError < StandardError
+end
