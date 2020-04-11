@@ -121,4 +121,6 @@ The final rover positions are:
 
 ### Running Tests
 The script comes with test cases that can be run using:
+
 `bundle exec rake spec`
+
