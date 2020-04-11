@@ -1,4 +1,4 @@
-require './validation_errors'
+require_relative'./validation_errors'
 
 module Validate
   def self.included(base)

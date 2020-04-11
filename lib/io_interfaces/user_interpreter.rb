@@ -1,5 +1,5 @@
-require './interpreter'
-require './end_of_input_error'
+require_relative './interpreter'
+require_relative '../custom_exceptions/end_of_input_error'
 
 class UserInterpreter < Interpreter
   def get_grid_size

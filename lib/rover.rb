@@ -1,7 +1,7 @@
 require 'matrix'
-require './validation'
-require './move_not_permitted_error'
-require './rover_initialization_error'
+require_relative './validations/validation'
+require_relative './custom_exceptions/move_not_permitted_error'
+require_relative './custom_exceptions/rover_initialization_error'
 
 class Rover
   include Validation

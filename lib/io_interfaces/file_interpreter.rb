@@ -1,6 +1,6 @@
 require 'json'
-require './end_of_input_error'
-require './interpreter'
+require_relative '../custom_exceptions/end_of_input_error'
+require_relative'./interpreter'
 
 class FileInterpreter < Interpreter
   def initialize(filename)

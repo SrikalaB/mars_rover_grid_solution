@@ -1,5 +1,4 @@
-require './validation'
-require 'byebug'
+require_relative './validations/validation'
 
 class Grid
   LOWER_INDEX = 0

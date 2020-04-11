@@ -1,4 +1,4 @@
-Dir["./*validator.rb"].each {|file| require file }
+Dir["./lib/validations/*validator.rb"].each {|file| require file }
 
 module Validation
   def valid?

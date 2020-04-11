@@ -1,8 +1,7 @@
-require './grid'
-require './grid_initialization_error'
-require './rover_initialization_error'
-require './rover'
-require 'byebug'
+require_relative './grid'
+require_relative './custom_exceptions/grid_initialization_error'
+require_relative './custom_exceptions/rover_initialization_error'
+require_relative './rover'
 
 class GridInterface
   def initialize(coordinates)
