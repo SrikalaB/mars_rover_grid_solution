@@ -10,8 +10,8 @@ Install all required dependencies as follows
 `$> bundle install`
 ### Usage
 ```
-Usage: ruby rover_control.rb --interactive
-Usage: ruby rover_control.rb --file=/path/to/jsonfile
+Usage: ruby bin/rover_control.rb --interactive
+Usage: ruby bin/rover_control.rb --file=/path/to/jsonfile
     -i, --interactive                Run interactively to enter input
     -f, --file=FILE                  Input json file with instructions.
     -h, --help                       Prints this help
@@ -37,8 +37,10 @@ Usage: ruby rover_control.rb --file=/path/to/jsonfile
   
 
 #### Usage- Interactive Method:
+Example:
 
-```ruby bin/rover_control.rb --interactive
+```
+ruby bin/rover_control.rb --interactive
 Enter the uppermost right corner coordinates of the plateau grid. (Example input: 7 7):
 10 10
 
@@ -64,6 +66,8 @@ The final rover positions are:
 In order to perform bulk rover movements on the grid, one can use the json file method.
 The convention used is same as explained in the input specifications section. An array of rovers can be passed as shown in the sample file below:
 
+input.json
+
 ```
 {
   "grid": {
@@ -87,4 +91,17 @@ The convention used is same as explained in the input specifications section. An
     }
   ]
 }
+```
+
+Usage: ruby bin/rover_control.rb --file=input.json
+
+```
+----Position of rover after move is: 1 3 N rover1----
+
+----Position of rover after move is: 5 1 E rover2----
+
+
+The final rover positions are:
+1 3 N rover1
+5 1 E rover2
 ```
