@@ -89,5 +89,16 @@ describe 'rover' do
       rover_2.move_forward!
       expect(rover_2.position).to eq Vector[0,0]
     end
+
+    it 'should not move to a position already taken by another rover' do
+      rover_3 = Rover.new(3, 4, 'S', grid)
+      rover_4 = Rover.new(3, 3, 'E', grid)
+      expect { rover_3.move_forward! }.to raise_error(MoveNotPermittedError)
+    end
+
+    it 'should not move out of the grid' do
+      rover_5 = Rover.new(5, 5, 'E', grid)
+      expect { rover_5.move_forward! }.to raise_error(MoveNotPermittedError)
+    end
   end
 end
