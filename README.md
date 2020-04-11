@@ -18,22 +18,22 @@ Usage: ruby rover_control.rb --file=/path/to/jsonfile
 ```    
 ### Input specifications
 - Plateau grid size to be input as two integers separated by a space.
-   - maximum x coordinate - Integer or 0
-   - maximum y coordinate - Integer or 0
-   Example: ` 5 5`
- - Rover Start position specification
+    - maximum x coordinate - Integer or 0
+    - maximum y coordinate - Integer or 0
+    Example: ` 5 5`
+- Rover Start position specification
     - Rover's x coordinate - Integer or 0
-   -  Rover's y coordinate - Integer or 0
-   - Rover's orientation - N, S, E or W 
-   To station the rover at position 2 on x axis, 3 on y axis facing north:
-   Use: ` 2 3 N`
-   N represents North, S - South,  E - East, W - West
+    -  Rover's y coordinate - Integer or 0
+    - Rover's orientation - N, S, E or W 
+    To station the rover at position 2 on x axis, 3 on y axis facing north:
+    Use: ` 2 3 N`
+    N represents North, S - South,  E - East, W - West
 - Rover movement instructions
-  - L = Turn Left
-  - R = Turn Right
-  - M = Move forward
- Input instructions separated by a space
- Example: `L M R M R R`
+    - L = Turn Left
+    - R = Turn Right
+    - M = Move forward
+    Input instructions separated by a space
+    Example: `L M R M R R`
   
 
 #### Usage- Interactive Method:
